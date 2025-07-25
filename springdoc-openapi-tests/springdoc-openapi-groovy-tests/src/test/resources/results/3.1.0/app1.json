@@ -2089,9 +2089,6 @@
                     },
                     "uniqueItems": true
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {}
                 }
               },
@@ -2230,9 +2227,6 @@
                   "type": "string"
                 },
                 "uniqueItems": true
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {}
             }
@@ -2445,9 +2439,6 @@
                     },
                     "uniqueItems": true
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {}
                 }
               },
@@ -2586,9 +2577,6 @@
                   "type": "string"
                 },
                 "uniqueItems": true
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {}
             }
@@ -4811,9 +4799,6 @@
                     },
                     "uniqueItems": true
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {}
                 }
               },
@@ -4952,9 +4937,6 @@
                   "type": "string"
                 },
                 "uniqueItems": true
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {}
             }

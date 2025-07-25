@@ -2348,9 +2348,6 @@
                       "type": "string"
                     }
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {
                     "type": "object"
                   }
@@ -2503,9 +2500,6 @@
                 "items": {
                   "type": "string"
                 }
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {
                 "type": "object"
@@ -2733,9 +2727,6 @@
                       "type": "string"
                     }
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {
                     "type": "object"
                   }
@@ -2888,9 +2879,6 @@
                 "items": {
                   "type": "string"
                 }
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {
                 "type": "object"
@@ -5356,9 +5344,6 @@
                       "type": "string"
                     }
                   },
-                  "nativeAccessEnabled": {
-                    "type": "boolean"
-                  },
                   "layer": {
                     "type": "object"
                   }
@@ -5511,9 +5496,6 @@
                 "items": {
                   "type": "string"
                 }
-              },
-              "nativeAccessEnabled": {
-                "type": "boolean"
               },
               "layer": {
                 "type": "object"
