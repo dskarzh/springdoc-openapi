@@ -282,19 +282,17 @@
 							<goals>deploy</goals>
 						</configuration>
 					</plugin>
-					<plugin>
-						<groupId>org.sonatype.central</groupId>
-						<artifactId>central-publishing-maven-plugin</artifactId>
-						<version>0.8.0</version>
-						<extensions>true</extensions>
-						<configuration>
-							<publishingServerId>central</publishingServerId>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
 	</profiles>
+	<distributionManagement>
+		<repository>
+			<id>thingsboard-public-repo</id>
+			<name>ThingsBoard Public Repo</name>
+			<url>https://repo.thingsboard.io/artifactory/libs-release-public</url>
+		</repository>
+	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
