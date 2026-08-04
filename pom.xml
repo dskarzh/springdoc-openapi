@@ -6,7 +6,7 @@
 	<packaging>pom</packaging>
 	<name>Spring openapi documentation</name>
 	<description>Spring openapi documentation</description>
-	<url>https://springdoc.org/</url>
+	<url>https://github.com/thingsboard/springdoc-openapi</url>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -43,10 +43,9 @@
 	</developers>
 
 	<scm>
-		<url>git@github.com:thingsboard/springdoc-openapi.git</url>
-		<connection>scm:git:git@github.com:thingsboard/springdoc-openapi.git</connection>
-		<developerConnection>scm:git:git@github.com:thingsboard/springdoc-openapi.git
-		</developerConnection>
+		<url>https://github.com/thingsboard/springdoc-openapi</url>
+		<connection>scm:git:https://github.com/thingsboard/springdoc-openapi.git</connection>
+		<developerConnection>scm:git:git@github.com:thingsboard/springdoc-openapi.git</developerConnection>
 		<tag>v2.8.8TB</tag>
 	</scm>
 
@@ -61,13 +60,14 @@
 	</modules>
 
 	<properties>
+		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<central-publishing-maven-plugin.version>0.7.0
 		</central-publishing-maven-plugin.version>
 		<flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
 		<swagger-api.version>2.2.30</swagger-api.version>
-		<swagger-ui.version>5.21.0TB</swagger-ui.version>
+		<swagger-ui.version>5.21.0TB2</swagger-ui.version>
 		<gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
 		<jjwt.version>0.9.1</jjwt.version>
 		<therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
@@ -119,6 +119,38 @@
 	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build-helper-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>add-licence-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<!--
+							  Appended as an extra resource (rather than a <resources> declaration,
+							  which would replace the filtered resources inherited from
+							  spring-boot-starter-parent) so that maven-source-plugin picks the
+							  licence files up into the sources jars.
+							-->
+							<resources>
+								<resource>
+									<directory>${basedir}/..</directory>
+									<targetPath>META-INF</targetPath>
+									<includes>
+										<include>LICENSE</include>
+										<include>COPYRIGHT</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -193,6 +225,37 @@
 							<sourcepath>src/main/java</sourcepath>
 							<source>17</source>
 						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-licence-into-javadoc</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<!--
+									  Runs before javadoc:jar (package), so the licence files end up
+									  inside the javadoc jars too. The path below is where the
+									  maven-javadoc-plugin version managed by spring-boot-starter-parent
+									  (3.10.1) writes its output.
+									-->
+									<outputDirectory>${project.build.directory}/reports/apidocs/META-INF</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/..</directory>
+											<includes>
+												<include>LICENSE</include>
+												<include>COPYRIGHT</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
